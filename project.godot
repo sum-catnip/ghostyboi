@@ -11,7 +11,13 @@ config_version=4
 [application]
 
 config/name="desktoppet"
+run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/per_pixel_transparency/allowed=true
+window/per_pixel_transparency/enabled=true
 
 [gui]
 

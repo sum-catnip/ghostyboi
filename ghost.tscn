@@ -104,3 +104,6 @@ script = ExtResource( 3 )
 frames = SubResource( 17 )
 animation = "idle"
 frame = 4
+playing = true
+
+[node name="activity" type="Node" parent="."]

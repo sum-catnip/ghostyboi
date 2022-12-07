@@ -20,6 +20,8 @@ func _ready():
 	OS.set_borderless_window(true)
 	OS.set_window_per_pixel_transparency_enabled(true)
 	get_tree().get_root().set_transparent_background(true)
+	print_debug(get_viewport().size)
+	OS.set_window_mouse_passthrough([Vector2(0, 0), Vector2(0, 0)])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

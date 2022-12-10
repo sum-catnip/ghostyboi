@@ -16,6 +16,9 @@ config/icon="res://icon.png"
 
 [display]
 
+window/size/width=2560
+window/size/height=1440
+window/size/always_on_top=true
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 

@@ -1,11 +1,9 @@
 extends Node
 
+onready var native = preload("res://native.gdns").new()
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var ghost: Node2D = get_parent()
-var mouse: Vector2
+onready var sprite: Node2D = ghost.get_node('sprite')
 
 const SMOOTH_SPEED = 2
 var repos = Vector2()
@@ -14,13 +12,12 @@ var position = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print('follow')
-	print(print_debug(ghost))
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var mpos = get_viewport().get_mouse_position()#.get_mouse_pos()
+	var mpos = native.cursor_pos()
+	mpos += Vector2(25, -25)
 	var destination = ghost.position
 
 	repos.x = mpos.x - destination.x
@@ -32,7 +29,11 @@ func _process(delta):
 	position.y += repos_velo.y
 
 	ghost.translate(repos_velo)
-	print(mpos)
-	
-	#mouse = get_viewport().get_mouse_position()
-	#ghost.set_position(mouse)
+	if abs(repos_velo.x) >= SMOOTH_SPEED:
+		sprite.play('move')
+		sprite.set_flip_h(repos_velo.x < 0)
+	else:
+		sprite.play('idle')
+
+func _exit():
+	sprite.play('idle')
